@@ -12,7 +12,7 @@
 
     <script>
         document.getElementById('startButton').addEventListener('click', async () => {
-            const manifestUri = 'https://localhost:3443/mpd/ysa1'; // כתובת ל-MPD דרך השרת
+            const manifestUri = 'https://77.127.217.139:3443/mpd/ysa1'; // כתובת ל-MPD דרך השרת
 
             const video = document.getElementById('video');
             const player = new shaka.Player(video);
@@ -22,14 +22,14 @@
                 if (type === shaka.net.NetworkingEngine.RequestType.SEGMENT) {
                     const originalUri = request.uris[0];
                     const segmentPath = originalUri.split('/').slice(-2).join('/'); // דוגמה להוציא last 2 parts
-                    request.uris = [`https://localhost:3443/segment/ysa1?url=${segmentPath}`];
+                    request.uris = [`https://77.127.217.139:3443/segment/ysa1?url=${segmentPath}`];
                 }
             });
 
             player.configure({
                 drm: {
                     servers: {
-                        'org.w3.clearkey': 'https://localhost:3443/license/ysa1'
+                        'org.w3.clearkey': 'https://77.127.217.139:3443/license/ysa1'
                     }
                 }
             });
